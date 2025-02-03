@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 😏❤️</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff4d4d;
+            font-size: 32px;
+            font-weight: bold;
+            animation: pulse 1.5s infinite alternate;
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+            height: 200px;
+        }
+        button {
+            font-size: 22px;
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 26px;
+            padding: 18px 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
+            transition: transform 0.2s;
+        }
+        .yes:hover {
+            transform: scale(1.1);
+        }
+        .no {
+            background-color: #ccc;
+            color: black;
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+        #image-container {
+            margin-top: 20px;
+        }
+        img {
+            width: 300px;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my Valentine? 😏❤️</h1>
+    <div class="buttons">
+        <button class="yes" onclick="yesClick()">Yes</button>
+        <button class="no" onmouseover="moveButton()">No</button>
+    </div>
+
+    <div id="image-container" class="hidden">
+        <p style="font-size: 24px; font-weight: bold; color: #ff4d4d;">Yay! I knew you'd say yes! 😘❤️</p>
+        <img src="wowmagdy.png" alt="Funny Reaction">
+    </div>
+
+    <script>
+        let speed = 1.3;
+        let moveSound = new Audio("https://www.myinstants.com/media/sounds/vine-boom.mp3");
+        
+        function yesClick() {
+            document.querySelector('#image-container').classList.remove('hidden');
+        }
+
+        function moveButton() {
+            let button = document.querySelector('.no');
+            let maxX = 400; 
+            let maxY = 200; 
+            let x = Math.random() * maxX * speed;
+            let y = Math.random() * maxY * speed;
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+            speed += 0.2;
+            moveSound.play();
+        }
+    </script>
+
+</body>
+</html>
